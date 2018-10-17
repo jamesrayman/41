@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Custom/_Scenes/TetrisDemo1.unity
+  isLoaded: 1
+  isActive: 1
