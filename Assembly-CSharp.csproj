@@ -53,30 +53,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\BallInstantiator.cs" />
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\BallReturn.cs" />
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\HoopTrigger.cs" />
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\Pulse.cs" />
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\Rotate.cs" />
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\Score.cs" />
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\Scoreboard.cs" />
-     <Compile Include="Assets\Custom\Scripts\Ball Pit\WaveHoop.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\Block.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\BlockArea.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\BlockAreaCosmetics.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\BlockManager.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\CubeVFX.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\Game.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\GameAreaDebug.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\GameSettings.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\GameSettingsAssigner.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\IntegerVector3.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\LayerClearEffect.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\RationalCurve.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\ScoreDisplay.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\Silhouette.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\Spawner.cs" />
-     <Compile Include="Assets\Custom\Scripts\Tetris\Utility.cs" />
+     <Compile Include="Assets\Custom\Scripts\Block.cs" />
+     <Compile Include="Assets\Custom\Scripts\BlockArea.cs" />
+     <Compile Include="Assets\Custom\Scripts\BlockAreaCosmetics.cs" />
+     <Compile Include="Assets\Custom\Scripts\BlockManager.cs" />
+     <Compile Include="Assets\Custom\Scripts\CubeVFX.cs" />
+     <Compile Include="Assets\Custom\Scripts\Game.cs" />
+     <Compile Include="Assets\Custom\Scripts\GameAreaDebug.cs" />
+     <Compile Include="Assets\Custom\Scripts\GameSettings.cs" />
+     <Compile Include="Assets\Custom\Scripts\GameSettingsAssigner.cs" />
+     <Compile Include="Assets\Custom\Scripts\IntegerVector3.cs" />
+     <Compile Include="Assets\Custom\Scripts\LayerClearEffect.cs" />
+     <Compile Include="Assets\Custom\Scripts\RationalCurve.cs" />
+     <Compile Include="Assets\Custom\Scripts\ScoreDisplay.cs" />
+     <Compile Include="Assets\Custom\Scripts\Silhouette.cs" />
+     <Compile Include="Assets\Custom\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Custom\Scripts\Utility.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -528,7 +520,7 @@
      <None Include="Assets\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
      <None Include="Assets\VRTK\Source\Scripts\Internal\Shaders\VRTK_OutlineBasic.shader" />
      <None Include="Assets\VRTK\Source\Scripts\Internal\Shaders\AdaptiveQualityDebugVisualization.shader" />
-     <None Include="Assets\Custom\Scripts\Tetris\Todolist.txt" />
+     <None Include="Assets\Custom\Scripts\Todolist.txt" />
      <None Include="Assets\VRTK\Source\Scripts\Internal\Shaders\VRTK_TunnelEffect.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
