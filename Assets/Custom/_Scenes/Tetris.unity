@@ -1439,6 +1439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0e6fb3c06b9a545a0546ed0dbd33ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cube: {fileID: 0}
 --- !u!4 &214014519
 Transform:
   m_ObjectHideFlags: 0
@@ -11379,7 +11380,7 @@ MonoBehaviour:
   floorHeight: 0.45
   areaSize: 5
   areaHeight: 10
-  gravity: 0.6
+  blockFallingSpeed: 0.6
   plantTime: 0
   spawnHeight: 8
   spawnlist:
@@ -27967,7 +27968,7 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 853
+      value: 855
       objectReference: {fileID: 0}
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}

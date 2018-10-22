@@ -41,7 +41,7 @@ public class GameAreaDebug : MonoBehaviour {
 		for (int i = 0; i < GameSettings.areaSize; i++) {
 			for (int j = 0; j < GameSettings.areaSize; j++) {
 				for (int k = 0; k < GameSettings.fullAreaHeight; k++) {
-					arr [i, k, j].SetActive (BlockArea.occupied [i, k, j] > 0);
+					arr [i, k, j].SetActive (BlockArea.occupied [i, k, j].OccupiedByBlock());
 				}
 			}
 		}

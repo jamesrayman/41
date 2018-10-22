@@ -7,6 +7,7 @@ using UnityEngine;
 public static class BlockManager {
 	// A list of all blocks which are manipulatable by the player
 	static List<Block> active = new List<Block>();
+	static List<Block> planting = new List<Block> ();
 
 	public static void AddActive (Block block) {
 		active.Add (block);
@@ -16,6 +17,13 @@ public static class BlockManager {
 	}
 	public static int CountActive () {
 		return active.Count;
+	}
+
+	public static void Plant (Block block) {
+		
+	}
+	public static void Unplant (Block block) {
+
 	}
 
 	public static void Clear () {

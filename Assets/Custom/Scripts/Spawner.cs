@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour {
 		gap = spawnGapCurve.Evaluate();
 
 		// useful for curve calibration
-		// Debug.Log (gap);
+		Debug.Log (gap);
 	}
 	public static void Activate () {
 		spawning = true;

@@ -69,9 +69,16 @@ public class Block : MonoBehaviour {
 				Lay ();
 			}
 		}
+		if (planting) {
+			IntegerVector3 underIndex = BlockArea.WorldSpaceToIndex (transform.position) + new IntegerVector3(0, -1, 0);
+
+			if (!BlockArea.IsOccupied (underIndex, cubePositions, transform.rotation, id)) {
+				Unlay ();
+			}
+		}
 
 		// Debug
-		cubeVFX.ApplyColor(Color.blue);
+		/*cubeVFX.ApplyColor(Color.blue);
 		if (delayedUngrabbed) {
 			cubeVFX.ApplyColor(Color.yellow);
 		}
@@ -80,7 +87,7 @@ public class Block : MonoBehaviour {
 		}
 		if (planting) {
 			cubeVFX.ApplyColor(Color.green);
-		}
+		}*/
 	}
 
 
@@ -93,10 +100,10 @@ public class Block : MonoBehaviour {
 	bool SnapHeight (Transform t) {
 		IntegerVector3 index = BlockArea.WorldSpaceToIndex (t.position);
 
-		if (BlockArea.IsOccupied (index, cubePositions, t.rotation)) {
+		if (BlockArea.IsOccupied (index, cubePositions, t.rotation, id)) {
 			do {
 				index.y++;
-			} while (BlockArea.IsOccupied (index, cubePositions, t.rotation));
+			} while (BlockArea.IsOccupied (index, cubePositions, t.rotation, id));
 
 			t.SetPositionAndRotation (BlockArea.IndexToWorldSpace (index), t.rotation);
 
@@ -127,7 +134,6 @@ public class Block : MonoBehaviour {
 	}
 
 
-
 	// Planting dynamics:
 
 	public void Grab () {
@@ -154,14 +160,14 @@ public class Block : MonoBehaviour {
 		if (planting) {
 			planting = false;
 			BlockArea.Unplace (this);
-			CancelInvoke ("Plant");
+			StopCoroutine("Plant");
 		}
 	}
 
 	public void Lay () {
 		planting = true;
 		BlockArea.Place (this);
-		Invoke ("Plant", gs.plantTime);
+		StartCoroutine ("Plant");
 	}
 
 	public void DelayedUngrab () {
@@ -171,14 +177,13 @@ public class Block : MonoBehaviour {
 	}
 
 
-	public void Plant () {
+	IEnumerator Plant () {
 		// Debug
-		cubeVFX.ApplyColor(Color.gray);
+		//cubeVFX.ApplyColor(Color.gray);
 
-		BlockArea.Unplace (this);
-		Snap (transform);
-		BlockArea.Place (this);
+		yield return new WaitForSeconds (gs.plantTime);
 
+		// Snap (transform);
 		BlockArea.Plant (this);
 	}
 }

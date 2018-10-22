@@ -9,12 +9,7 @@ public class BlockArea : MonoBehaviour {
 	public static BlockArea main;
 
 	public static GameObject[,,] blocks; // [x, y, z]
-
-	// TODO: create OccupationState class
-	// 0 = unoccupied
-	// -1 = occupied by clear layer
-	// n = occupied by block with id n
-	public static int [,,] occupied;
+	public static OccupationState [,,] occupied;
 
 	static float heightOffset, corner;
 
@@ -23,7 +18,15 @@ public class BlockArea : MonoBehaviour {
 		main = this;
 
 		blocks = new GameObject[gs.areaSize, gs.fullAreaHeight, gs.areaSize];
-		occupied = new int[gs.areaSize, gs.fullAreaHeight, gs.areaSize];
+		occupied = new OccupationState[gs.areaSize, gs.fullAreaHeight, gs.areaSize];
+
+		for (int x = 0; x < gs.areaSize; x++) {
+			for (int y = 0; y < gs.fullAreaHeight; y++) {
+				for (int z = 0; z < gs.areaSize; z++) {
+					occupied [x, y, z] = new OccupationState ();
+				}
+			}
+		}
 
 		heightOffset = gs.floorHeight + gs.blockSize;
 		corner = -(gs.areaSize - 1) * gs.blockSize / 2;
@@ -71,10 +74,10 @@ public class BlockArea : MonoBehaviour {
 	}
 	public static bool IsCubeInBounds (IntegerVector3 index) {
 		return IsCubeInPlanarBounds (index) &&
-			index.y >= 0; 
+			index.y >= 0;
 	}
 
-	public static bool IsCubeOccupied (IntegerVector3 index) {
+	public static bool IsCubeOccupied (IntegerVector3 index, int id = 0) {
 		if (IsCubeOverfull (index))
 			return false;
 
@@ -84,12 +87,12 @@ public class BlockArea : MonoBehaviour {
 		if (!IsCubeInBounds (index))
 			return true;
 		
-		return index.At (occupied) != 0;
+		return index.At (occupied).Occupied(id);
 	}
 
-	public static bool IsOccupied (IntegerVector3 anchor, List<IntegerVector3> structure, Quaternion rotation) {
+	public static bool IsOccupied (IntegerVector3 anchor, List<IntegerVector3> structure, Quaternion rotation, int id = 0) {
 		foreach (IntegerVector3 cube in structure) {
-			if (IsCubeOccupied (anchor + rotation * cube)) {
+			if (IsCubeOccupied (anchor + rotation * cube, id)) {
 				return true;
 			}
 		}
@@ -109,7 +112,11 @@ public class BlockArea : MonoBehaviour {
 		foreach (GameObject cube in block.cubes) {
 			IntegerVector3 index = WorldSpaceToIndex (cube.transform.position, false);
 			if (index.inBounds (occupied)) {
-				index.Set (occupied, id);
+				if (id == 0) {
+					index.Set (occupied, new OccupationState (OccupationState.Type.Unoccupied));
+				} else {
+					index.Set (occupied, new OccupationState (OccupationState.Type.Occupied, id));
+				}
 			}
 		}
 	}
@@ -129,8 +136,8 @@ public class BlockArea : MonoBehaviour {
 			IntegerVector3 index = WorldSpaceToIndex (cube.transform.position, false);
 			index.Set (blocks, cube);
 
-			if (index.At (occupied) != block.id)
-				Debug.Log (string.Format("! {0}", index.At (occupied)));
+			if (index.At (occupied).GetID() != block.id)
+				Debug.Log (string.Format("! {0}", index.At (occupied).GetID()));
 		}
 
 		Object.Destroy (block.gameObject);
@@ -138,9 +145,12 @@ public class BlockArea : MonoBehaviour {
 		RemovePlanes ();
 
 		if (IsFull()) {
-			Game.EndGame ();
-			Game.StartGame ();
+			main.Invoke ("EndGame", 0);
 		}
+	}
+
+	public void EndGame () {
+		Game.EndGame ();
 	}
 
 
@@ -152,7 +162,7 @@ public class BlockArea : MonoBehaviour {
 
 			for (int x = 0; x < gs.areaSize; x++) {
 				for (int z = 0; z < gs.areaSize; z++) {
-					if (occupied [x, y, z] > 0) {
+					if (occupied [x, y, z].OccupiedByBlock()) {
 						clear = false;
 						break;
 					}
@@ -176,7 +186,7 @@ public class BlockArea : MonoBehaviour {
 
 			for (int x = 0; x < gs.areaSize; x++) {
 				for (int z = 0; z < gs.areaSize; z++) {
-					full &= occupied [x, y, z] > 0;
+					full &= occupied [x, y, z].OccupiedByBlock();
 				}
 			}
 
@@ -186,7 +196,7 @@ public class BlockArea : MonoBehaviour {
 
 				for (int x = 0; x < gs.areaSize; x++) {
 					for (int z = 0; z < gs.areaSize; z++) {
-						occupied [x, y, z] = -1;
+						occupied [x, y, z] = new OccupationState(OccupationState.Type.LayerClear);
 					}
 				}
 			}
@@ -225,7 +235,7 @@ public class BlockArea : MonoBehaviour {
 
 			for (int x = 0; x < gs.areaSize; x++) {
 				for (int z = 0; z < gs.areaSize; z++) {
-					occupied [x, y, z] = 0;
+					occupied [x, y, z] = new OccupationState(OccupationState.Type.Unoccupied);
 					GameObject.Destroy(blocks [x, y, z]);
 					blocks [x, y, z] = null;
 
@@ -237,7 +247,7 @@ public class BlockArea : MonoBehaviour {
 				for (int x = 0; x < gs.areaSize; x++) {
 					for (int z = 0; z < gs.areaSize; z++) {
 						occupied[x, y-1, z] = occupied[x, y, z];
-						occupied[x, y, z] = 0;
+						occupied[x, y, z] = new OccupationState(OccupationState.Type.Unoccupied);
 
 						blocks [x, y - 1, z] = blocks [x, y, z];
 						blocks [x, y, z] = null;
@@ -257,11 +267,11 @@ public class BlockArea : MonoBehaviour {
 		for (int x = 0; x < gs.areaSize; x++) {
 			for (int y = 0; y < gs.fullAreaHeight; y++) {
 				for (int z = 0; z < gs.areaSize; z++) {
-					if (occupied [x, y, z] != 0) {
+					if (occupied [x, y, z].Occupied()) {
 						Object.Destroy (BlockArea.blocks [x, y, z]);
 
 						blocks [x, y, z] = null;
-						occupied [x, y, z] = 0;
+						occupied [x, y, z] = new OccupationState(OccupationState.Type.Unoccupied);
 					}
 				}
 			}

@@ -11392,7 +11392,7 @@ MonoBehaviour:
   - {fileID: 1286265561741016, guid: c77da8421f913ee49a1cc4917193f07f, type: 2}
   - {fileID: 1747550127836812, guid: 4ae8cee948ee54f41a085690393b3c5e, type: 2}
   - {fileID: 1964365725141314, guid: 94757c94584a4e647b340b93c35d4143, type: 2}
-  initialSpawnGap: 2.5
+  initialSpawnGap: 4
   initialSpawnGapSlope: -0.3
   spawnGapLimit: 2
 --- !u!4 &968284518
@@ -12505,7 +12505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1170786782
 Transform:
   m_ObjectHideFlags: 0

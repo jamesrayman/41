@@ -12,6 +12,8 @@ public static class Game {
 		ScoreDisplay.prev = score;
 		Game.Reset();
 		Spawner.Deactivate();
+
+		StartGame ();
 	}
 	public static void StartGame () {
 		Spawner.Activate();
@@ -29,7 +31,7 @@ public static class Game {
 			return;
 
 		// 1000 for 1 layer
-		// 4x for every extra layer
-		score += (Mathf.RoundToInt(Mathf.Pow(4, layerClears-1))) * 1000;
+		// 3x for every extra layer
+		score += (Mathf.RoundToInt(Mathf.Pow(3, layerClears-1))) * 1000;
 	}
 }
