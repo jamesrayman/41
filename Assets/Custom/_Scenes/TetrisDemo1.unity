@@ -3516,6 +3516,7 @@ GameObject:
   - component: {fileID: 502583065}
   - component: {fileID: 502583064}
   - component: {fileID: 502583066}
+  - component: {fileID: 502583068}
   m_Layer: 0
   m_Name: RightController
   m_TagString: Untagged
@@ -3579,7 +3580,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnTriggerPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 502583068}
+        m_MethodName: TryAutoGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnTriggerReleased:
@@ -3887,6 +3899,17 @@ MonoBehaviour:
   gripSenseAxisChanged: 0
   gripSensePressed: 0
   controllerVisible: 1
+--- !u!114 &502583068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502583062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c6e428111772b4baf51bc5466d3263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &504771178
 GameObject:
   m_ObjectHideFlags: 0
@@ -11381,7 +11404,9 @@ MonoBehaviour:
   areaSize: 5
   areaHeight: 10
   blockFallingSpeed: 0.4
+  blockFallingGradient: 0.4
   plantTime: 1
+  autoGrab: 0
   spawnHeight: 8
   spawnlist:
   - {fileID: 1469977359410106, guid: b375886f59b59594ead0975ebe5df370, type: 2}
@@ -11393,8 +11418,8 @@ MonoBehaviour:
   - {fileID: 1747550127836812, guid: 4ae8cee948ee54f41a085690393b3c5e, type: 2}
   - {fileID: 1964365725141314, guid: 94757c94584a4e647b340b93c35d4143, type: 2}
   initialSpawnGap: 4
-  initialSpawnGapSlope: -0.3
-  spawnGapLimit: 2
+  initialSpawnGapSlope: -0.75
+  spawnGapLimit: 1
 --- !u!4 &968284518
 Transform:
   m_ObjectHideFlags: 0
@@ -12656,6 +12681,7 @@ GameObject:
   - component: {fileID: 1176153050}
   - component: {fileID: 1176153049}
   - component: {fileID: 1176153051}
+  - component: {fileID: 1176153053}
   m_Layer: 0
   m_Name: LeftController
   m_TagString: Untagged
@@ -12719,7 +12745,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnTriggerPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1176153053}
+        m_MethodName: TryAutoGrab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnTriggerReleased:
@@ -13027,6 +13064,17 @@ MonoBehaviour:
   gripSenseAxisChanged: 0
   gripSensePressed: 0
   controllerVisible: 1
+--- !u!114 &1176153053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1176153047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c6e428111772b4baf51bc5466d3263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1201381743
 GameObject:
   m_ObjectHideFlags: 0

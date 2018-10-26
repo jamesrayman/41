@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Custom\Scripts\AutoGrab.cs" />
      <Compile Include="Assets\Custom\Scripts\Block.cs" />
      <Compile Include="Assets\Custom\Scripts\BlockArea.cs" />
      <Compile Include="Assets\Custom\Scripts\BlockAreaCosmetics.cs" />

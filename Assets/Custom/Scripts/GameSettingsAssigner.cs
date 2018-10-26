@@ -19,7 +19,9 @@ public class GameSettingsAssigner : MonoBehaviour {
 	// Blocks
 
 	public float blockFallingSpeed;
+	public float blockFallingGradient;
 	public float plantTime;
+	public bool autoGrab;
 
 
 	// Spawner
@@ -49,7 +51,9 @@ public class GameSettingsAssigner : MonoBehaviour {
 
 		// Blocks
 		GameSettings.blockFallingSpeed = blockFallingSpeed;
+		GameSettings.blockFallingGradient = blockFallingGradient;
 		GameSettings.plantTime = plantTime;
+		GameSettings.autoGrab = autoGrab;
 
 		// Spawner
 		GameSettings.spawnHeight = spawnHeight;

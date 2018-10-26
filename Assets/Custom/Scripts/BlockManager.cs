@@ -7,7 +7,6 @@ using UnityEngine;
 public static class BlockManager {
 	// A list of all blocks which are manipulatable by the player
 	static List<Block> active = new List<Block>();
-	static List<Block> planting = new List<Block> ();
 
 	public static void AddActive (Block block) {
 		active.Add (block);
@@ -19,13 +18,6 @@ public static class BlockManager {
 		return active.Count;
 	}
 
-	public static void Plant (Block block) {
-		
-	}
-	public static void Unplant (Block block) {
-
-	}
-
 	public static void Clear () {
 		for (int i = active.Count - 1; i > -1; i--) {
 			Object.Destroy (active[i].gameObject);
@@ -33,9 +25,41 @@ public static class BlockManager {
 		active.Clear ();
 	}
 
-	public static void UnplantAll () {
-		foreach (Block block in active) {
-			block.Unlay();
+	public static Block AutoGrabBlock () {
+		Block block = null;
+		float height = float.PositiveInfinity;
+
+		foreach (Block candidate in active) {
+			if (candidate.IsAutoGrabbable () && candidate.transform.position.y < height) {
+				block = candidate;
+				height = candidate.transform.position.y;
+			}
 		}
+
+		if (block == null) {
+			return Spawner.main.Spawn ();
+		}
+		return block;
+	}
+	public static float LowestUngrabbedHeight () {
+		float height = GameSettings.spawnHeight;
+
+		foreach (Block candidate in active) {
+			if (candidate.IsAutoGrabbable () && candidate.transform.position.y < height) {
+				height = candidate.transform.position.y;
+			}
+		}
+
+		return height;
+	}
+
+	public static float BlockFallingSpeed (float height) {
+		float areaHeight = (GameSettings.areaHeight+5) * GameSettings.blockSize;
+
+		if (height < areaHeight)
+			return GameSettings.blockFallingSpeed;
+
+		//Debug.Log (GameSettings.blockFallingSpeed * Mathf.Exp(height/8));
+		return GameSettings.blockFallingSpeed * Mathf.Exp((height - areaHeight) * GameSettings.blockFallingGradient);
 	}
 }

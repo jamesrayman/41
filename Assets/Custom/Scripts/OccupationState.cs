@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class OccupationState {
 	public enum Type {
-		Unoccupied, Occupied, LayerClear
+		Unoccupied, Layed, Planted, LayerClear
 	};
 	Type type;
 
@@ -18,17 +18,24 @@ public class OccupationState {
 		id = i;
 	}
 
+	// is this spot completely unoccupied?
 	public bool Unoccupied () {
 		return type == Type.Unoccupied;
 	}
+
+	// ignoring the unplanted block ignoreId, is this spot occupied?
 	public bool Occupied (int ignoreId = 0) {
-		if (type == Type.Occupied && id == ignoreId) {
+		if (type == Type.Layed && id == ignoreId) {
 			return false;
 		}
 		return !Unoccupied();
 	}
+
 	public bool OccupiedByBlock () {
-		return type == Type.Occupied;
+		return type == Type.Layed || type == Type.Planted;
+	}
+	public bool OccupiedByPlantedBlock () {
+		return type == Type.Planted;
 	}
 
 	public int GetID () {

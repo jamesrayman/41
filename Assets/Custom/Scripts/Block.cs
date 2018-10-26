@@ -16,6 +16,7 @@ public class Block : MonoBehaviour {
 	bool grabbed = false;
 	bool delayedUngrabbed = false;
 	bool planting = false;
+	bool prevGrabbed;
 
 	CubeVFX cubeVFX;
 
@@ -28,6 +29,8 @@ public class Block : MonoBehaviour {
 
 	void Start () {
 		id = GetId ();
+		prevGrabbed = false;
+
 		BlockManager.AddActive (this);
 		shadow.SetActive (false);
 
@@ -60,7 +63,8 @@ public class Block : MonoBehaviour {
 			shadow.transform.SetPositionAndRotation (transform.position, transform.rotation);
 			Snap (shadow.transform);
 		} else if (!planting) {
-			transform.position += gs.blockFallingSpeed * Time.deltaTime * Vector3.down;
+			transform.position += BlockManager.BlockFallingSpeed (transform.position.y) * Time.deltaTime * Vector3.down;
+
 			//if (BlockArea.IsOccupied (BlockArea.WorldSpaceToIndex (transform.position), cubePositions, transform.rotation)) {
 			//	Snap (transform);
 			//	Lay ();
@@ -90,6 +94,9 @@ public class Block : MonoBehaviour {
 		}*/
 	}
 
+	public bool IsAutoGrabbable () {
+		return !prevGrabbed;
+	}
 
 
 
@@ -137,6 +144,7 @@ public class Block : MonoBehaviour {
 	// Planting dynamics:
 
 	public void Grab () {
+		prevGrabbed = true;
 		shadow.SetActive (true);
 		grabbed = true;
 		delayedUngrabbed = false;
@@ -165,6 +173,7 @@ public class Block : MonoBehaviour {
 	}
 
 	public void Lay () {
+		prevGrabbed = true;
 		planting = true;
 		BlockArea.Place (this);
 		StartCoroutine ("Plant");
@@ -175,7 +184,6 @@ public class Block : MonoBehaviour {
 
 		Invoke ("Ungrab", 0);
 	}
-
 
 	IEnumerator Plant () {
 		// Debug

@@ -115,7 +115,7 @@ public class BlockArea : MonoBehaviour {
 				if (id == 0) {
 					index.Set (occupied, new OccupationState (OccupationState.Type.Unoccupied));
 				} else {
-					index.Set (occupied, new OccupationState (OccupationState.Type.Occupied, id));
+					index.Set (occupied, new OccupationState (OccupationState.Type.Layed, id));
 				}
 			}
 		}
@@ -135,6 +135,7 @@ public class BlockArea : MonoBehaviour {
 			cube.transform.SetParent (null);
 			IntegerVector3 index = WorldSpaceToIndex (cube.transform.position, false);
 			index.Set (blocks, cube);
+			index.Set (occupied, new OccupationState (OccupationState.Type.Planted, block.id));
 
 			if (index.At (occupied).GetID() != block.id)
 				Debug.Log (string.Format("! {0}", index.At (occupied).GetID()));
@@ -162,7 +163,7 @@ public class BlockArea : MonoBehaviour {
 
 			for (int x = 0; x < gs.areaSize; x++) {
 				for (int z = 0; z < gs.areaSize; z++) {
-					if (occupied [x, y, z].OccupiedByBlock()) {
+					if (occupied [x, y, z].OccupiedByPlantedBlock()) {
 						clear = false;
 						break;
 					}
@@ -186,7 +187,7 @@ public class BlockArea : MonoBehaviour {
 
 			for (int x = 0; x < gs.areaSize; x++) {
 				for (int z = 0; z < gs.areaSize; z++) {
-					full &= occupied [x, y, z].OccupiedByBlock();
+					full &= occupied [x, y, z].OccupiedByPlantedBlock();
 				}
 			}
 

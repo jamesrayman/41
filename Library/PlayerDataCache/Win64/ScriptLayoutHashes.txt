@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-D:/UnityProjects/Ramen/Executable/N/A.exe
+D:/UnityProjects/Ramen/Executable/3D-Tetris.exe
 SceneListBegin?
 Assets/Custom/_Scenes/TetrisDemo1.unity
 SceneListEnd?
@@ -330,6 +330,7 @@ cb627b69b2264319338db084039ddd9a Assembly-CSharp.dll:Valve.VR.InteractionSystem.
 fedb6d553b63fb39431614f016aaef45 Assembly-CSharp.dll:VRTK.VRTK_DestinationPoint
 5d1070df9412113467b597481d4e4803 Assembly-CSharp.dll:VRTK.VRTK_SDKInputOverride
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.BlockArea
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.AutoGrab
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:VRTK.Examples.ExcludeTeleport
 a3a97220ba881fbf68c9b09483f3d9dd Assembly-CSharp.dll:VRTK.VRTK_Simulator
 90c3d9142659db07ae2fbfe77fd9a525 Assembly-CSharp.dll:VRTK.UnityEventHelper.VRTK_UIDraggableItem_UnityEvents
@@ -389,7 +390,7 @@ f32bbfb5d3cf43b562784e4686557766 Assembly-CSharp.dll:VRTK.GrabAttachMechanics.VR
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:VRTK.SDK_FallbackBoundaries
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Spawner
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:VRTK.Examples.PanelMenu.PanelMenuDemoFlyingSaucer
-ea5cae446400b98ada9f7f48b8501cbe Assembly-CSharp.dll:.GameSettingsAssigner
+9cc5646d242af898a90b0cb521f15b60 Assembly-CSharp.dll:.GameSettingsAssigner
 f2527def16eea3c459d3e5039b694972 Assembly-CSharp.dll:VRTK.VRTK_TeleportDisableOnControllerObscured
 72a8523b432c0a5317826b7a9e0a0e79 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 de65fcc7ce94396437768c356a6a9ddf Assembly-CSharp.dll:VRTK.VRTK_IndependentRadialMenuController

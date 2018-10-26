@@ -18,7 +18,9 @@ public static class GameSettings {
 
 	// Blocks
 	public static float blockFallingSpeed;
+	public static float blockFallingGradient;
 	public static float plantTime;
+	public static bool autoGrab;
 
 	// Spawner
 	public static float spawnHeight;
