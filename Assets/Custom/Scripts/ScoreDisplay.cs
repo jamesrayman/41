@@ -11,19 +11,16 @@ public class ScoreDisplay : MonoBehaviour {
 		text = GetComponent<Text> ();
 		high = PlayerPrefs.GetInt ("HS");
 
-		if (high < 65000) {
-			high = 65000;
+		if (high < 75000) {
+			high = 75000;
 			PlayerPrefs.SetInt ("HS", high);
 		}
 	}
 
 	void Update () {
 		text.text = string.Format("High Score: {0}{3}\nPrevious Game Score: {1}\n<size=140>Score: {2}</size>", 
-			high, prev, Game.score, (high == 65000 ? " (Dev High Score)" : ""));
-
-		//text.text = string.Format("Spawn Gap: {4}\nHigh Score: {0}{3}\nPrevious Game Score: {1}\n<size=140>Score: {2}</size>", 
-		//	high, prev, Game.score, (high == 65000 ? " (Dev High Score)" : ""), Spawner.GetSpawnGap());
-
+			high, prev, Game.score, (high == 75000 ? " (Dev High Score)" : ""));
+		
 		if (Game.score > high) {
 			high = Game.score;
 			PlayerPrefs.SetInt ("HS", high);
