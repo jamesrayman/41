@@ -1,3 +1,3 @@
 # 41
 
-A polycube packing game in virtual reality. Inspired by a very famous tetromino packing game.
+A polycube packing game in virtual reality inspired by a very famous tetromino packing game.
