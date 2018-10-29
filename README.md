@@ -1,3 +1,3 @@
-# 3D Tetris
+# 41
 
-A 3D tetris game in VR.
+A polycube packing game in virtual reality. Inspired by a very famous tetromino packing game.
