@@ -17,8 +17,6 @@ public class AutoGrab : MonoBehaviour {
 
 	public void TryAutoGrab () {
 		if (gs.autoGrab) {
-			//StartCoroutine ("TrueTryAutoGrab");
-
 			if (interactTouch.GetTouchedObject () == null) {
 				Block block = BlockManager.AutoGrabBlock ();
 				block.transform.SetPositionAndRotation (transform.position, transform.rotation);
@@ -28,17 +26,4 @@ public class AutoGrab : MonoBehaviour {
 			}
 		}
 	}
-
-	/* IEnumerator TrueTryAutoGrab () {
-		yield return new WaitForEndOfFrame ();
-
-		if (interactGrab.GetGrabbedObject () == null) {
-			Block block = BlockManager.AutoGrabBlock ();
-			block.transform.SetPositionAndRotation (transform.position, transform.rotation);
-
-			yield return new WaitForEndOfFrame ();
-
-			interactGrab.AttemptGrab ();
-		}
-	} */
 }

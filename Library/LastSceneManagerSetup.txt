@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Custom/_Scenes/Demo1.unity
+- path: Assets/Custom/_Scenes/Colors.unity
   isLoaded: 1
   isActive: 1

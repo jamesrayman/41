@@ -32,6 +32,9 @@ public class BlockArea : MonoBehaviour {
 		corner = -(gs.areaSize - 1) * gs.blockSize / 2;
 	}
 
+	// Transform a world vector to block area index space
+	// x and z coordinates are rounded to the nearest integer
+	// y is floored if floorHeight is true
 	public static IntegerVector3 WorldSpaceToIndex (Vector3 position, bool floorHeight = true) {
 		int x = Mathf.RoundToInt ((position.x - corner) / gs.blockSize);
 		int y;
@@ -45,6 +48,8 @@ public class BlockArea : MonoBehaviour {
 
 		return new IntegerVector3 (x, y, z);
 	}
+
+	// Transform a block area index vector into world space
 	public static Vector3 IndexToWorldSpace (IntegerVector3 index) {
 		float x = corner + gs.blockSize * index.x;
 		float y = heightOffset + gs.blockSize * index.y;
@@ -53,6 +58,7 @@ public class BlockArea : MonoBehaviour {
 		return new Vector3(x, y, z);
 	}
 
+	// Restrict the x and z coordinates of an index vector to within the block area
 	public static IntegerVector3 Clamp (IntegerVector3 index) {
 		index.x = Mathf.Clamp (index.x, 0, gs.areaSize - 1);
 		index.z = Mathf.Clamp (index.z, 0, gs.areaSize - 1);
@@ -108,6 +114,7 @@ public class BlockArea : MonoBehaviour {
 		return false;
 	}
 
+	// General Place and Unplace helper method
 	static void GeneralPlace (Block block, int id) {
 		foreach (GameObject cube in block.cubes) {
 			IntegerVector3 index = WorldSpaceToIndex (cube.transform.position, false);
@@ -121,13 +128,16 @@ public class BlockArea : MonoBehaviour {
 		}
 	}
 
+	// Place, but do not plant, a block in the block area
 	public static void Place (Block block) {
 		GeneralPlace (block, block.id);
 	}
+	// Unplace a block, used when picking blocks back up
 	public static void Unplace (Block block) {
 		GeneralPlace (block, 0);
 	}
 
+	// Plant a block so that it can't be moved again
 	public static void Plant (Block block) {
 		BlockManager.RemoveActive (block);
 
@@ -178,7 +188,7 @@ public class BlockArea : MonoBehaviour {
 		return nLayers > gs.areaHeight;
 	}
 
-
+	// Call to remove any full planes on the block area
 	public static void RemovePlanes () {
 		List<int> removeQueue = new List<int> ();
 
@@ -263,7 +273,6 @@ public class BlockArea : MonoBehaviour {
 	}
 
 	public static void Reset () {
-
 		// Remove all blocks from the block area
 		for (int x = 0; x < gs.areaSize; x++) {
 			for (int y = 0; y < gs.fullAreaHeight; y++) {
