@@ -230,7 +230,7 @@ public class BlockArea : MonoBehaviour {
 	}
 
 	// TODO: rewrite this method
-	public IEnumerator RemoveLayers (List<int> layers) {
+	public void RemoveLayers (List<int> layers) {
 		foreach (int y in layers) {
 			for (int x = 0; x < gs.areaSize; x++) {
 				for (int z = 0; z < gs.areaSize; z++) {
@@ -239,7 +239,7 @@ public class BlockArea : MonoBehaviour {
 			}
 		}
 
-		yield return new WaitForSeconds(0.25f);
+		//yield return new WaitForSeconds(0.25f);
 
 		foreach (int layer in layers) {
 			int y = layer;

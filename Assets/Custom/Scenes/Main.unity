@@ -6677,14 +6677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0.547, b: 1, a: 1}
-  - {r: 1, g: 1, b: 0, a: 1}
-  - {r: 0.14705884, g: 0.77141696, b: 1, a: 1}
-  - {r: 0, g: 1, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.678, b: 0, a: 1}
-  - {r: 0, g: 0.828, b: 0.541, a: 1}
+  - {r: 0, g: 1, b: 0.541, a: 1}
   particleBundleSize: 8
   dropSpeed: 1
 --- !u!199 &887597266
@@ -6937,9 +6930,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 4
+      minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.541, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0, b: 0, a: 1}
@@ -11849,9 +11842,9 @@ MonoBehaviour:
   - {fileID: 1286265561741016, guid: c77da8421f913ee49a1cc4917193f07f, type: 3}
   - {fileID: 1747550127836812, guid: 4ae8cee948ee54f41a085690393b3c5e, type: 3}
   - {fileID: 1964365725141314, guid: 94757c94584a4e647b340b93c35d4143, type: 3}
-  initialSpawnGap: 4
+  initialSpawnGap: 3
   initialSpawnGapSlope: -1
-  spawnGapLimit: 1
+  spawnGapLimit: 2
 --- !u!4 &968284518
 Transform:
   m_ObjectHideFlags: 0
