@@ -11834,17 +11834,21 @@ MonoBehaviour:
   autoGrab: 0
   spawnHeight: 8
   spawnlist:
+  - {fileID: 1550217244960390, guid: 765ba89b26fc8a04ea236bdcb2cbac06, type: 3}
+  - {fileID: 1550217244960390, guid: e980bab03541d9a448c3a4e249ed8a92, type: 3}
+  - {fileID: 1550217244960390, guid: 378c5f32dee500241b072a6273aecd8d, type: 3}
+  - {fileID: 1550217244960390, guid: f172782c297e13e409001da463779359, type: 3}
   - {fileID: 1469977359410106, guid: b375886f59b59594ead0975ebe5df370, type: 3}
-  - {fileID: 1733381546554504, guid: ffb425d0f17f6644b800180d49d63050, type: 3}
   - {fileID: 1617878607755214, guid: 5f6ceaf0cafb1cd429ce3e00d39db25a, type: 3}
+  - {fileID: 1733381546554504, guid: ffb425d0f17f6644b800180d49d63050, type: 3}
   - {fileID: 1050883961113616, guid: fd9e86064c889ca48ad3a60344ab7bb4, type: 3}
-  - {fileID: 1324985272192328, guid: b840eae21444a1f43bad27d93a958115, type: 3}
   - {fileID: 1286265561741016, guid: c77da8421f913ee49a1cc4917193f07f, type: 3}
+  - {fileID: 1324985272192328, guid: b840eae21444a1f43bad27d93a958115, type: 3}
   - {fileID: 1747550127836812, guid: 4ae8cee948ee54f41a085690393b3c5e, type: 3}
   - {fileID: 1964365725141314, guid: 94757c94584a4e647b340b93c35d4143, type: 3}
-  initialSpawnGap: 3
+  initialSpawnGap: 2
   initialSpawnGapSlope: -1
-  spawnGapLimit: 2
+  spawnGapLimit: 1.5
 --- !u!4 &968284518
 Transform:
   m_ObjectHideFlags: 0
